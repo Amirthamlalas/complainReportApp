@@ -24,7 +24,13 @@ private UserDao dao;
         return "signup working";
     }
 
-
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "viewprofile",produces = "application/json",consumes = "application/json")
+    public List<Report>viewProfile(@RequestBody Report u){
+        String id= String.valueOf(u.getId());
+        System.out.println(id);
+        return (List<Report>)dao.ViewProfile(u.getId());
+    }
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/userlogin",produces = "application/json",consumes = "application/json")
     public HashMap<String, String> userLogin(@RequestBody Report r){
