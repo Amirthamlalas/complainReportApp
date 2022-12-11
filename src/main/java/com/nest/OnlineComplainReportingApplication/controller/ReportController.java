@@ -18,10 +18,12 @@ private UserDao dao;
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/usersignup",produces = "application/json",consumes = "application/json")
-    public String userSignup(@RequestBody Report r){
+    public HashMap<String, String> userSignup(@RequestBody Report r){
         System.out.println(r.getName());
+        HashMap<String,String>map=new HashMap<>();
+        map.put("status","success");
         dao.save(r);
-        return "signup working";
+        return map;
     }
 
     @CrossOrigin(origins = "*")
